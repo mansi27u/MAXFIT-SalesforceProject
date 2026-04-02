@@ -1,12 +1,17 @@
 <template>
-    <lightning-card title="Create Event">
+    <lightning-card title="Create Event" icon-name="standard:event">
 
-        <lightning-record-form
-            object-api-name="Event__c"
-            layout-type="Full"
-            mode="edit"
-            onsuccess={handleSuccess}>
-        </lightning-record-form>
+        <div style="padding: 16px; background:#f9f9f9; border-radius:8px;">
+
+            <lightning-record-form
+                object-api-name="Event__c"
+                layout-type="Full"
+                mode="edit"
+                columns="2"
+                onsuccess={handleSuccess}>
+            </lightning-record-form>
+
+        </div>
 
     </lightning-card>
 </template>

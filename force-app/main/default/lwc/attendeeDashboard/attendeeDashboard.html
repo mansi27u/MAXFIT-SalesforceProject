@@ -1,18 +1,36 @@
 <template>
-    <lightning-card title="Attendee Dashboard">
+    <lightning-card title="Attendee Dashboard" icon-name="standard:contact">
 
-        <lightning-input
-    type="text"
-    label="Search Attendee"
-    placeholder="Type name..."
-    onchange={handleSearch}>
-</lightning-input>
+        <!-- Search Bar -->
+        <div style="padding: 12px; background:#f4f6f9; border-bottom:1px solid #ddd;">
+            <lightning-input
+                type="text"
+                label="Search Attendee"
+                placeholder="🔍 Type name to search..."
+                onchange={handleSearch}>
+            </lightning-input>
+        </div>
 
-        <lightning-datatable
-            key-field="Id"
-            data={filteredAttendees}
-            columns={columns}>
-        </lightning-datatable>
+        <!-- Table Section -->
+        <div style="padding: 12px;">
+
+            <template if:true={filteredAttendees}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={filteredAttendees}
+                    columns={columns}
+                    hide-checkbox-column
+                    class="slds-table_bordered slds-table_striped">
+                </lightning-datatable>
+            </template>
+
+            <template if:false={filteredAttendees}>
+                <div style="text-align:center; padding:20px; color:gray;">
+                    No attendees found
+                </div>
+            </template>
+
+        </div>
 
     </lightning-card>
 </template>

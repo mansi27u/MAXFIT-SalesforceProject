@@ -1,9 +1,26 @@
 <template>
-    <lightning-card title="Event List">
-        <lightning-datatable
-            key-field="Id"
-            data={events}
-            columns={columns}>
-        </lightning-datatable>
+    <lightning-card title="Event List" icon-name="standard:event">
+
+        <div style="padding: 12px;">
+
+            <template if:true={events}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={events}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                    class="slds-table_bordered slds-table_striped">
+                </lightning-datatable>
+            </template>
+
+            <template if:false={events}>
+                <div style="text-align:center; padding:20px; color:gray;">
+                    No events available..
+                </div>
+            </template>
+
+        </div>
+
     </lightning-card>
 </template>
